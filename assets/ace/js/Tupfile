@@ -1,0 +1,53 @@
+ACEJS = \
+    ace-elements.min.js \
+    ace.min.js \
+
+JSES = \
+    additional-methods.min.js \
+    bootbox.min.js \
+    chosen.jquery.min.js \
+    fullcalendar.min.js \
+    prettify.js \
+    select2.min.js \
+    spin.min.js \
+    markdown/markdown.min.js \
+    fuelux/fuelux.spinner.min.js \
+    fuelux/fuelux.tree.min.js \
+    fuelux/fuelux.wizard.min.js \
+    fuelux/data/fuelux.tree-sampledata.js \
+    date-time/daterangepicker.min.js \
+    date-time/moment.min.js
+
+JSBOOTSTRAP = \
+    bootstrap-colorpicker.min.js \
+    bootstrap-tag.min.js \
+    bootstrap-wysiwyg.min.js \
+    bootstrap.min.js \
+    x-editable/ace-editable.min.js \
+    x-editable/bootstrap-editable.min.js \
+    markdown/bootstrap-markdown.min.js \
+    date-time/bootstrap-datepicker.min.js \
+    date-time/bootstrap-timepicker.min.js \
+
+JSJQUERY = \
+    jquery.autosize-min.js \
+    jquery.colorbox-min.js \
+    jquery.dataTables.bootstrap.js \
+    jquery.easy-pie-chart.min.js \
+    jquery.gritter.min.js \
+    jquery.hotkeys.min.js \
+    jquery.inputlimiter.1.3.1.min.js \
+    jquery.knob.min.js \
+    jquery.maskedinput.min.js \
+    jquery.slimscroll.min.js \
+    jquery.ui.touch-punch.min.js \
+    jquery.validate.min.js \
+    flot/jquery.flot.min.js \
+    flot/jquery.flot.pie.min.js \
+    flot/jquery.flot.resize.min.js \
+    jquery.sparkline.min.js
+
+: $(ACEJS) |> cat %f > %o |> ace2.min.js
+: $(JSES) |> cat %f > %o |> others.min.js
+: $(JSBOOTSTRAP) |> cat %f > %o |> bootstrap-custom.min.js
+: $(JSJQUERY) |> cat %f > %o |> jquery-custom.min.js

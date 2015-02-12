@@ -1,0 +1,29 @@
+BOOTSTRAP_CSS = \
+    bootstrap-editable.css \
+    bootstrap-responsive.min.css \
+    bootstrap-timepicker.css \
+    bootstrap.min.css
+
+ACE_CSS = \
+    ace-responsive.min.css \
+    ace-skins.min.css \
+    ace.min.css \
+
+OTHERS_CSS = \
+    chosen.css \
+    colorbox.css \
+    colorpicker.css \
+    datepicker.css \
+    daterangepicker.css \
+    font-awesome.min.css \
+    fullcalendar.css \
+    prettify.css \
+    select2.css
+
+COMBINER = java -jar /home/surya/degalab/assets/buildtools/combiner-0.0.1.jar -s
+YUIC = java -jar /home/surya/degalab/assets/buildtools/yuicompressor-2.4.5.jar --type css --nomunge
+
+: $(OTHERS_CSS) |> $(COMBINER) -o %o %f |> others.css
+: $(ACE_CSS) |> $(COMBINER) -o %o %f |> ace2.min.css
+: $(BOOTSTRAP_CSS) |> $(COMBINER) -o %o %f |> bootstrap-custom.min.css
+: others.css |> $(YUIC) -o %o %f |> others.min.css

@@ -4,14 +4,15 @@ class Menu extends CI_Controller {
 		parent::__construct();
 		$this->load->model("Menu_model");
 		$this->title = 'Menu';
+		$this->template = 'template/ace/index';
 	}
 
 	function index(){
 		$data['title']		= $this->title;
-		$data['content']	= 'menu.php';
+		$data['content']	= 'blank.php';
 		$data['data'] 		= $this->Menu_model->getMenuAll();
 
-		$this->load->view('template',$data);
+		$this->load->view($this->template,$data);
 	}
 
 	// get data use javascript, for javascript edit
@@ -26,7 +27,7 @@ class Menu extends CI_Controller {
 		$data['state']		= 'add';
 		$data['content']	= 'menu_form.php';
 
-		$this->load->view('template',$data);
+		$this->load->view($this->template,$data);
 	}
 
 	// edit Menu by form
@@ -36,7 +37,7 @@ class Menu extends CI_Controller {
 		$data['content']	= 'menu_form.php';
 		$data['data'] 		= $this->Menu_model->getMenuById($id);
 
-		$this->load->view('template',$data);
+		$this->load->view($this->template,$data);
 	}
 
 	function insert(){
