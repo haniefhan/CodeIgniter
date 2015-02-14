@@ -138,7 +138,7 @@
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<?php echo $this->load->view($content); ?>
+							<?php $this->load->view($content); ?>
 						</div>
 					</div>
 				</div>
