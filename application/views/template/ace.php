@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php 
+	$system 		= system_info();
 	$template_name 	= 'ace';
 	$url_css		= base_url().'assets/'.$template_name.'/css/'; 
 	$url_script		= base_url().'assets/'.$template_name.'/js/'; 
@@ -54,9 +55,9 @@
 				<a href="#" class="brand">
 					<table width="100%">
 						<tr>
-							<td><img src="#" width="51" height="50"></td>
-							<td style="padding:0px 15px"><large>IsaFW - Framework</large>
-								<small>Information System</small></td>
+							<td><img src="<?php echo base_url().$system->sys_logo ?>" width="140" ></td>
+							<td style="padding:0px 15px"><large><?php echo $system->sys_title ?> - <?php echo $system->sys_subtitle ?></large><br/>
+								<small><?php echo $system->sys_tag ?></small></td>
 							</tr>
 						</table>					
 					</a>

@@ -2,22 +2,22 @@
 class Menu extends CI_Controller {
 	public function __construct(){
 		parent::__construct();
-		$this->load->model("Menu_model");
+		$this->load->model("Model_Menu");
 		$this->title = 'Menu';
-		$this->template = 'template/ace/index';
+		$this->template = 'template/ace';
 	}
 
 	function index(){
 		$data['title']		= $this->title;
 		$data['content']	= 'blank.php';
-		$data['data'] 		= $this->Menu_model->getMenuAll();
+		$data['data'] 		= $this->Model_Menu->get();
 
 		$this->load->view($this->template,$data);
 	}
 
 	// get data use javascript, for javascript edit
 	function get($id = 0){
-		$data	= $this->menu->getMenuById($id);
+		$data	= $this->Model_Menu->get_by_id($id);
 		echo json_encode($data);
 	}
 
@@ -35,14 +35,14 @@ class Menu extends CI_Controller {
 		$data['title']		= 'Edit '.$this->title;
 		$data['state']		= 'edit';
 		$data['content']	= 'menu_form.php';
-		$data['data'] 		= $this->Menu_model->getMenuById($id);
+		$data['data'] 		= $this->Model_Menu->get_by_id($id);
 
 		$this->load->view($this->template,$data);
 	}
 
 	function insert(){
 		$data = $this->input->post(); //  $data = $_POST;
-		if($this->Menu_model->insertMenu($data)){
+		if($this->Model_Menu->insert($data)){
 			$this->session->set_userdata(array('status' => true, 'msg' => 'Menu berhasil ditambahkan')); // Insert success
 		}else{
 			$this->session->set_userdata(array('status' => false, 'msg' => 'Menu gagal ditambahkan')); // Insert failed
@@ -52,7 +52,7 @@ class Menu extends CI_Controller {
 
 	function update($id = 0){
 		$data = $this->input->post(); //  $data = $_POST;
-		if($this->Menu_model->updateMenu($id,$data)){
+		if($this->Model_Menu->update($id,$data)){
 			$this->session->set_userdata(array('status' => true, 'msg' => 'Menu berhasil diubah')); // Update success
 		}else{
 			$this->session->set_userdata(array('status' => false, 'msg' => 'Menu gagal diubah')); // Update failed
@@ -61,7 +61,7 @@ class Menu extends CI_Controller {
 	}
 
 	function delete($id = 0){
-		if($this->Menu_model->deleteMenu($id)){
+		if($this->Model_Menu->delete($id)){
 			$this->session->set_userdata(array('status' => true, 'msg' => 'Menu berhasil dihapus')); // Delete success
 		}else{
 			$this->session->set_userdata(array('status' => false, 'msg' => 'Menu gagal dihapus')); // Delete failed
