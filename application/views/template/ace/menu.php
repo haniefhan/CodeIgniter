@@ -34,11 +34,41 @@
 		</div>
 		<ul class="nav nav-list">
 			<?php foreach (get_menu() as $i => $v) {?>
-				<li>
-					<a href="<?php echo base_url().$v->menu_url ?>" class="dropdown-toggle">
-						<i class="<?php echo $v->menu_icon ?>"></i>
-						<span class="menu-text"><?php echo $v->menu_name ?></span>
+				<li class="open">
+					<a href="<?php echo base_url().$v['menu_url'] ?>" class="dropdown-toggle">
+						<i class="<?php echo $v['menu_icon'] ?>"></i>
+						<span class="menu-text"><?php echo $v['menu_name'] ?></span>
+						<?php if(isset($v['menu_child'])){ ?>
+							<b class="arrow icon-angle-down"></b>
+						<?php } ?>
 					</a>
+					<?php if(isset($v['menu_child'])){ ?>
+						<ul class="submenu">
+							<?php foreach ($v['menu_child'] as $j => $w) {?>
+								<li>
+									<a href="<?php echo base_url().$w['menu_url'] ?>" class="dropdown-toggle">
+										<i class="<?php echo $w['menu_icon'] ?>"></i>
+										<span class="menu-text"><?php echo $w['menu_name'] ?></span>
+										<?php if(isset($w['menu_child'])){ ?>
+											<b class="arrow icon-angle-down"></b>
+										<?php } ?>
+									</a>
+									<?php if(isset($w['menu_child'])){ ?>
+										<ul class="submenu">
+										<?php foreach ($w['menu_child'] as $k => $x) {?>
+											<li>
+												<a href="<?php echo base_url().$x['menu_url'] ?>" class="dropdown-toggle">
+													<i class="<?php echo $x['menu_icon'] ?>"></i>
+													<span class="menu-text"><?php echo $x['menu_name'] ?></span>
+												</a>
+											</li>
+										<?php } ?>
+										</ul>
+									<?php }?>
+								</li>
+							<?php } ?>
+						</ul>
+					<?php } ?>
 				</li>
 			<?php } ?>
 		</ul>

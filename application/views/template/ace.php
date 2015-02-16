@@ -38,10 +38,15 @@
 	<!-- inline styles related to this page -->
 
 	<!-- ace settings handler -->
-
+	<script src="<?php echo $url_script;?>jquery-2.0.3.min.js"></script>
+	<script src="<?php echo $url_script;?>jquery-ui-1.10.3.custom.min.js"></script>
+	<script src="<?php echo $url_script;?>bootstrap.min.js"></script>
+	<script src="<?php echo $url_script;?>bootstrap-tag.min.js"></script>
+	<script src="<?php echo $url_script;?>ace-elements.min.js"></script>
+	<script src="<?php echo $url_script;?>ace.min.js"></script>
 	<script src="<?php echo $url_script;?>ace-extra.min.js"></script>
+
 	<!--[if !IE]> -->
-	<script src='<?php echo $url_script;?>jquery-2.0.3.min.js'></script>
 	<!--<script type="text/javascript">
 	window.jQuery || document.write(""+"<"+"/script>");
 </script>-->
@@ -138,7 +143,7 @@
 					</div>
 					<div class="row-fluid">
 						<div class="span12">
-							<?php echo $this->load->view($content); ?>
+							<?php $this->load->view($content); ?>
 						</div>
 					</div>
 				</div>
